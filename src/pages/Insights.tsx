@@ -4,7 +4,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import { ChartConfig, LineProps } from "recharts";
+import { LineProps } from "recharts";
+import { ChartConfig } from "@/components/ui/chart";
 import { useUser } from "@/contexts/UserContext";
 import { format, subMonths, startOfMonth, endOfMonth, isWithinInterval } from "date-fns";
 import {
