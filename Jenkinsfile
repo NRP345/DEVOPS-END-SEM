@@ -8,11 +8,12 @@ KUBECONFIG_CREDENTIALS_ID = 'kubeconfig-secret' // Optional: Jenkins secret text
 }
 
 stages {
-stage('Clone Repository') {
-steps {
-git 'https://github.com/NRP345/DEVOPS-END-SEM.git'
-}
-}
+        stage('Clone Repository') {
+            steps {
+                git branch: 'main', url: 'https://github.com/NRP345/DEVOPS-END-SEM.git'
+            }
+        }
+
 
 stage('Build Docker Image') {
   steps {
