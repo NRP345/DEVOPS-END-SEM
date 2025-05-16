@@ -3,7 +3,7 @@ agent any
 
 environment {
 DOCKER_IMAGE =  'nrpatil654/devops-end-sem:latest' // Replace with your Docker Hub image
-DOCKER_CREDENTIALS_ID = 'dockerhub-credentials' // Jenkins credential ID for Docker Hub
+DOCKER_CREDENTIALS_ID = 'docker-hub-credentials' // Jenkins credential ID for Docker Hub
 KUBECONFIG_CREDENTIALS_ID = 'kubeconfig-secret' // Optional: Jenkins secret text or file credential
 }
 
