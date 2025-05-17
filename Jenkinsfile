@@ -40,8 +40,8 @@ stage('Deploy to Kubernetes') {
       script {
         sh '''
           export KUBECONFIG=$KUBECONFIG_FILE
-          kubectl apply -f k8s/deployment.yaml
-          kubectl apply -f k8s/service.yaml
+          kubectl apply -f deployment.yaml
+          kubectl apply -f service.yaml
         '''
       }
     }
