@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-end-sem
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devops-end-sem
+  template:
+    metadata:
+      labels:
+        app: devops-end-sem
+    spec:
+      containers:
+        - name: devops-end-sem
+          image: nrpatil654/devops-end-sem:latest
+          ports:
+            - containerPort: 80
