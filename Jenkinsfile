@@ -14,7 +14,6 @@ stages {
             }
         }
 
-
 stage('Build Docker Image') {
   steps {
     script {
@@ -33,6 +32,17 @@ stage('Push Docker Image') {
     }
   }
 }
+        
+stage('Deploy ELK') {
+    steps {
+        sh '''
+            kubectl apply -f k8s/elk/elasticsearch.yaml
+            kubectl apply -f k8s/elk/kibana.yaml
+            kubectl apply -f k8s/elk/filebeat.yaml
+        '''
+    }
+}
+
 
 stage('Deploy to Kubernetes') {
   steps {
