@@ -33,15 +33,7 @@ stage('Push Docker Image') {
   }
 }
         
-stage('Deploy ELK') {
-    steps {
-        sh '''
-            kubectl apply -f k8s/elk/elasticsearch.yaml
-            kubectl apply -f k8s/elk/kibana.yaml
-            kubectl apply -f k8s/elk/filebeat.yaml
-        '''
-    }
-}
+
 
 
 stage('Deploy to Kubernetes') {
@@ -59,6 +51,24 @@ stage('Deploy to Kubernetes') {
 }
 
 }
+stage('Ansible Deploy') {
+  steps {
+    sh '''
+      cd ansible
+      ansible-playbook -i hosts.ini deploy.yaml
+    '''
+  }
+}
+stage('Deploy ELK') {
+    steps {
+        sh '''
+            kubectl apply -f k8s/elk/elasticsearch.yaml
+            kubectl apply -f k8s/elk/kibana.yaml
+            kubectl apply -f k8s/elk/filebeat.yaml
+        '''
+    }
+}
+        
 
 post {
 success {
