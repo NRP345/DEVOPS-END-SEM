@@ -1,0 +1,17 @@
+---
+- name: Deploy DEVOPS-END-SEM locally
+  hosts: local
+  tasks:
+    - name: Ensure Docker is installed
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes
+
+    - name: Start container from built image
+      docker_container:
+        name: devops-end-sem
+        image: nrpatil654/devops-end-sem:latest
+        state: started
+        ports:
+          - "8080:80"
