@@ -1,6 +1,6 @@
----
 - name: Deploy DEVOPS-END-SEM locally
-  hosts: local
+  hosts: localhost  # Changed from 'local' to standard 'localhost'
+  become: yes  # Added privilege escalation for entire playbook
   tasks:
     - name: Ensure Docker is installed
       apt:
@@ -8,10 +8,21 @@
         state: present
         update_cache: yes
 
+    - name: Ensure Docker service is running
+      systemd:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Install Python Docker module
+      pip:
+        name: docker
+
     - name: Start container from built image
-      docker_container:
+      community.docker.docker_container:  # Using fully qualified collection name
         name: devops-end-sem
         image: nrpatil654/devops-end-sem:latest
         state: started
         ports:
           - "8080:80"
+
