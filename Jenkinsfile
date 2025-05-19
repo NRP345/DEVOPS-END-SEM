@@ -50,14 +50,7 @@ pipeline {
             }
         }
 
-        stage('Ansible Deploy') {
-            steps {
-                sh '''
-                    cd ansible
-                    ansible-playbook -i hosts.ini deploy.yaml
-                '''
-            }
-        }
+       
 
         stage('Deploy ELK') {
             steps {
