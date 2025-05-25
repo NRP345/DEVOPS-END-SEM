@@ -52,22 +52,7 @@ pipeline {
 
        
 
-        stage('Deploy ELK') {
-            steps {
-                withCredentials([file(credentialsId: "${KUBECONFIG_CREDENTIALS_ID}", variable: 'KUBECONFIG_FILE')]) {
-                    script {
-                        sh '''
-                            export KUBECONFIG=$KUBECONFIG_FILE
-                            kubectl apply --validate=false -f k8s/elk/elasticsearch.yaml
-                            kubectl apply --validate=false -f k8s/elk/kibana.yaml
-                            kubectl apply --validate=false -f k8s/elk/filebeat.yaml
-                        '''
-                    }
-                }
-            }
-        }
-
-    }
+    
 
     post {
         success {
