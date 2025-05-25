@@ -49,10 +49,7 @@ pipeline {
                 }
             }
         }
-
-       
-
-    
+    }
 
     post {
         success {
@@ -63,3 +60,4 @@ pipeline {
         }
     }
 }
+
